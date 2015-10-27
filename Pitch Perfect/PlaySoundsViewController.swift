@@ -70,6 +70,7 @@ class PlaySoundsViewController: UIViewController {
 
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayer.stop()
+        audioEngine.stop()
     }
     @IBAction func playSlow(sender: UIButton) {
         audioPlayer.stop()
