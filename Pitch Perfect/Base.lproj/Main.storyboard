@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dwG-0L-GXv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -72,7 +71,7 @@
                             <constraint firstItem="icQ-vB-8Is" firstAttribute="leading" secondItem="roi-th-b1o" secondAttribute="leading" id="25l-iF-UIb"/>
                             <constraint firstItem="w8e-ua-EOY" firstAttribute="top" secondItem="Tdi-XN-Qrk" secondAttribute="bottom" constant="55" id="2Vv-Fy-93C"/>
                             <constraint firstItem="roi-th-b1o" firstAttribute="leading" secondItem="Tdi-XN-Qrk" secondAttribute="trailing" constant="13" id="3JU-r9-DDZ"/>
-                            <constraint firstItem="M6A-99-3X4" firstAttribute="leading" secondItem="pwH-lZ-1aa" secondAttribute="leadingMargin" constant="25" id="FXR-y0-ydE"/>
+                            <constraint firstItem="M6A-99-3X4" firstAttribute="leading" secondItem="pwH-lZ-1aa" secondAttribute="leadingMargin" constant="10" id="FXR-y0-ydE"/>
                             <constraint firstItem="w8e-ua-EOY" firstAttribute="centerX" secondItem="pwH-lZ-1aa" secondAttribute="centerX" id="Wzy-ig-qmL"/>
                             <constraint firstItem="R7d-R0-fkp" firstAttribute="top" secondItem="w8e-ua-EOY" secondAttribute="bottom" constant="117" id="gUA-5k-68v"/>
                             <constraint firstItem="Tdi-XN-Qrk" firstAttribute="leading" secondItem="M6A-99-3X4" secondAttribute="leading" id="rxF-4f-FCM"/>
