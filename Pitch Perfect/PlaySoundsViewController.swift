@@ -11,22 +11,21 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
-    var audioPlayer:AVAudioPlayer!
-    var receivedAudio:RecordedAudio!
-    
-    var audioEngine:AVAudioEngine!
-    var audioFile: AVAudioFile!
+    private var audioPlayer:AVAudioPlayer!
+    internal var receivedAudio:RecordedAudio!
+
+    private var audioEngine:AVAudioEngine!
+    private var audioFile: AVAudioFile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        audioPlayer = try!
-        AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
+
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
         audioPlayer.enableRate=true
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,7 +35,7 @@ class PlaySoundsViewController: UIViewController {
         stopResetAudio()
         playAudioWithRate(1.5)
     }
-    
+
     @IBAction func playChipMunk(sender: UIButton) {
         playAudioWithVariablePitch(1000)
     }
@@ -48,12 +47,12 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func stopAudio(sender: UIButton) {
         stopResetAudio()
     }
-    
+
     @IBAction func playSlow(sender: UIButton) {
         stopResetAudio()
         playAudioWithRate(0.5)
     }
-    
+
     private func playAudioWithVariablePitch(pitch: Float){
         stopResetAudio()
         
@@ -72,13 +71,13 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.play()
     }
-    
+
     private func playAudioWithRate(rate: Float) {
         audioPlayer.rate=rate
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
     }
-    
+
     private func stopResetAudio(){
         audioPlayer.stop()
         audioEngine.stop()

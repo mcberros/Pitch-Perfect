@@ -15,22 +15,22 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var tapToRecordLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
-    
-    var audioRecorder:AVAudioRecorder!
-    var recordedAudio:RecordedAudio!
-    
+
+    private var audioRecorder:AVAudioRecorder!
+    private var recordedAudio:RecordedAudio!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         stopButton.hidden=true;
         recordButton.enabled=true;
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "stopRecording") {
             let playSoundVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
@@ -46,11 +46,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func recordAudio(sender: UIButton) {
         stopButton.hidden=false;
         tapToRecordLabel.hidden=true;
@@ -73,7 +74,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
-    
+
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag){
             recordedAudio = RecordedAudio(filePathURL: recorder.url, title: recorder.url.lastPathComponent!)
@@ -84,7 +85,5 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             recordButton.enabled = true
             stopButton.hidden = true
         }
-        
     }
 }
-
