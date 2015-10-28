@@ -26,17 +26,15 @@ class PlaySoundsViewController: UIViewController {
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
     }
-
-    @IBAction func playFast(sender: UIButton) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        playAudioWithRate(0.5)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func playFast(sender: UIButton) {
+        stopResetAudio()
+        playAudioWithRate(1.5)
     }
     
     @IBAction func playChipMunk(sender: UIButton) {
@@ -46,11 +44,18 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func playDarthvaderAudio(sender: UIButton) {
         playAudioWithVariablePitch(-1000)
     }
+
+    @IBAction func stopAudio(sender: UIButton) {
+        stopResetAudio()
+    }
     
-    func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+    @IBAction func playSlow(sender: UIButton) {
+        stopResetAudio()
+        playAudioWithRate(0.5)
+    }
+    
+    private func playAudioWithVariablePitch(pitch: Float){
+        stopResetAudio()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -67,22 +72,16 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.play()
     }
-
-    @IBAction func stopAudio(sender: UIButton) {
-        audioPlayer.stop()
-        audioEngine.stop()
-    }
     
-    @IBAction func playSlow(sender: UIButton) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        playAudioWithRate(0.5)
-    }
-    
-    func playAudioWithRate(rate: Float) {
+    private func playAudioWithRate(rate: Float) {
         audioPlayer.rate=rate
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
+    }
+    
+    private func stopResetAudio(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
 }
