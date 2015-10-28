@@ -185,29 +185,43 @@
                                     <action selector="stopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="agZ-Vt-s6L"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUi-Dy-r8L">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="374" width="107" height="18"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oPy-pK-RqT" firstAttribute="centerX" secondItem="Vhe-E8-ena" secondAttribute="centerX" id="7sa-WN-uKW"/>
                             <constraint firstItem="Vhe-E8-ena" firstAttribute="top" secondItem="oPy-pK-RqT" secondAttribute="bottom" constant="24" id="NSi-UZ-3xt"/>
+                            <constraint firstItem="fUi-Dy-r8L" firstAttribute="top" secondItem="Vhe-E8-ena" secondAttribute="top" id="i4F-aL-VPy"/>
                             <constraint firstItem="ZqW-Lg-ZAu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m2i-ah-k8s"/>
                             <constraint firstItem="oPy-pK-RqT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mTy-m2-5B6"/>
                             <constraint firstItem="Vhe-E8-ena" firstAttribute="centerX" secondItem="ZqW-Lg-ZAu" secondAttribute="centerX" id="tVO-rF-sJd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZqW-Lg-ZAu" secondAttribute="bottom" constant="66" id="ySe-ch-67G"/>
+                            <constraint firstItem="fUi-Dy-r8L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yj9-gr-pde"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="oPy-pK-RqT"/>
                                 <exclude reference="Vhe-E8-ena"/>
                                 <exclude reference="ZqW-Lg-ZAu"/>
+                                <exclude reference="fUi-Dy-r8L"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ySe-ch-67G"/>
-                                <exclude reference="m2i-ah-k8s"/>
                                 <exclude reference="7sa-WN-uKW"/>
                                 <exclude reference="mTy-m2-5B6"/>
+                                <exclude reference="i4F-aL-VPy"/>
+                                <exclude reference="yj9-gr-pde"/>
                                 <exclude reference="NSi-UZ-3xt"/>
                                 <exclude reference="tVO-rF-sJd"/>
+                                <exclude reference="m2i-ah-k8s"/>
+                                <exclude reference="ySe-ch-67G"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -215,14 +229,17 @@
                                 <include reference="oPy-pK-RqT"/>
                                 <include reference="Vhe-E8-ena"/>
                                 <include reference="ZqW-Lg-ZAu"/>
+                                <include reference="fUi-Dy-r8L"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ySe-ch-67G"/>
-                                <include reference="m2i-ah-k8s"/>
                                 <include reference="7sa-WN-uKW"/>
                                 <include reference="mTy-m2-5B6"/>
+                                <include reference="i4F-aL-VPy"/>
+                                <include reference="yj9-gr-pde"/>
                                 <include reference="NSi-UZ-3xt"/>
                                 <include reference="tVO-rF-sJd"/>
+                                <include reference="m2i-ah-k8s"/>
+                                <include reference="ySe-ch-67G"/>
                             </mask>
                         </variation>
                     </view>
@@ -231,6 +248,7 @@
                         <outlet property="recordButton" destination="oPy-pK-RqT" id="jdO-1y-ecB"/>
                         <outlet property="recordingLabel" destination="Vhe-E8-ena" id="GB9-QT-me9"/>
                         <outlet property="stopButton" destination="ZqW-Lg-ZAu" id="Ht2-UK-dxn"/>
+                        <outlet property="tapToRecordLabel" destination="fUi-Dy-r8L" id="84r-Sm-9cj"/>
                         <segue destination="AXA-Dm-hIm" kind="show" identifier="stopRecording" id="3He-HK-3Zd"/>
                     </connections>
                 </viewController>

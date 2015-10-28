@@ -13,6 +13,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
+    @IBOutlet weak var tapToRecordLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
@@ -40,6 +41,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func stopAudio(sender: UIButton) {
         recordingLabel.hidden = true;
+        tapToRecordLabel.hidden = false;
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
@@ -51,6 +53,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func recordAudio(sender: UIButton) {
         stopButton.hidden=false;
+        tapToRecordLabel.hidden=true;
         recordingLabel.hidden = false;
         recordButton.enabled=false;
 
