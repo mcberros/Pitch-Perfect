@@ -11,17 +11,17 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
-    private var audioPlayer:AVAudioPlayer!
-    internal var receivedAudio:RecordedAudio!
+    private var audioPlayer: AVAudioPlayer!
+    internal var receivedAudio: RecordedAudio!
 
-    private var audioEngine:AVAudioEngine!
+    private var audioEngine: AVAudioEngine!
     private var audioFile: AVAudioFile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
-        audioPlayer.enableRate=true
+        audioPlayer.enableRate = true
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
     }
@@ -73,7 +73,7 @@ class PlaySoundsViewController: UIViewController {
     }
 
     private func playAudioWithRate(rate: Float) {
-        audioPlayer.rate=rate
+        audioPlayer.rate = rate
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
     }

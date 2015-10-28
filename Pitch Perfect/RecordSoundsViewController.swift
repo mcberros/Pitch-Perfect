@@ -16,8 +16,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var tapToRecordLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
 
-    private var audioRecorder:AVAudioRecorder!
-    private var recordedAudio:RecordedAudio!
+    private var audioRecorder: AVAudioRecorder!
+    private var recordedAudio: RecordedAudio!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +27,21 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
-        stopButton.hidden=true;
-        recordButton.enabled=true;
+        stopButton.hidden = true
+        recordButton.enabled = true
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "stopRecording") {
-            let playSoundVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            let playSoundVC: PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
             let data = sender as! RecordedAudio
             playSoundVC.receivedAudio = data
         }
     }
 
     @IBAction func stopAudio(sender: UIButton) {
-        recordingLabel.hidden = true;
-        tapToRecordLabel.hidden = false;
+        recordingLabel.hidden = true
+        tapToRecordLabel.hidden = false
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
@@ -53,10 +53,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(sender: UIButton) {
-        stopButton.hidden=false;
-        tapToRecordLabel.hidden=true;
-        recordingLabel.hidden = false;
-        recordButton.enabled=false;
+        stopButton.hidden = false
+        tapToRecordLabel.hidden = true
+        recordingLabel.hidden = false
+        recordButton.enabled = false
 
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
