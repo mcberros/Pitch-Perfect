@@ -20,10 +20,8 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
-        audioPlayer.enableRate = true
-        audioEngine = AVAudioEngine()
-        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
+        initAudioPlayer()
+        initAudioEngine()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +49,17 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func playSlow(sender: UIButton) {
         stopResetAudio()
         playAudioWithRate(0.5)
+    }
+
+    private func initAudioPlayer() {
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
+        audioPlayer.enableRate = true
+
+    }
+
+    private func initAudioEngine(){
+        audioEngine = AVAudioEngine()
+        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
     }
 
     private func playAudioWithVariablePitch(pitch: Float){
