@@ -54,7 +54,6 @@ class PlaySoundsViewController: UIViewController {
     private func initAudioPlayer() {
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
         audioPlayer.enableRate = true
-
     }
 
     private func initAudioEngine(){
@@ -64,7 +63,8 @@ class PlaySoundsViewController: UIViewController {
 
     private func playAudioWithVariablePitch(pitch: Float){
         stopResetAudio()
-        
+
+        // Set the audioEngine
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
@@ -77,7 +77,8 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()
-        
+
+        // Play the audio
         audioPlayerNode.play()
     }
 
