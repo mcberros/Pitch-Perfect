@@ -99,6 +99,9 @@
                                 <exclude reference="A1v-Tu-AON"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="dd1-vs-Agk"/>
+                                <exclude reference="Cml-ef-vTP"/>
+                                <exclude reference="JEH-ie-Yrc"/>
                                 <exclude reference="FXR-y0-ydE"/>
                                 <exclude reference="tl9-bf-29N"/>
                                 <exclude reference="GdU-XC-5SB"/>
@@ -107,10 +110,7 @@
                                 <exclude reference="tkb-gF-TN9"/>
                                 <exclude reference="3JU-r9-DDZ"/>
                                 <exclude reference="zZD-ai-Ko9"/>
-                                <exclude reference="Cml-ef-vTP"/>
-                                <exclude reference="JEH-ie-Yrc"/>
                                 <exclude reference="fek-PE-2G5"/>
-                                <exclude reference="dd1-vs-Agk"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -123,6 +123,9 @@
                                 <include reference="A1v-Tu-AON"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="dd1-vs-Agk"/>
+                                <include reference="Cml-ef-vTP"/>
+                                <include reference="JEH-ie-Yrc"/>
                                 <include reference="FXR-y0-ydE"/>
                                 <include reference="tl9-bf-29N"/>
                                 <include reference="GdU-XC-5SB"/>
@@ -131,10 +134,7 @@
                                 <include reference="tkb-gF-TN9"/>
                                 <include reference="3JU-r9-DDZ"/>
                                 <include reference="zZD-ai-Ko9"/>
-                                <include reference="Cml-ef-vTP"/>
-                                <include reference="JEH-ie-Yrc"/>
                                 <include reference="fek-PE-2G5"/>
-                                <include reference="dd1-vs-Agk"/>
                             </mask>
                         </variation>
                     </view>
@@ -203,6 +203,9 @@
                                         <include reference="RKg-cN-Ssl"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="resumeRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x3d-h6-0SK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJU-ZA-iZA" userLabel="Pause Button">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -220,6 +223,9 @@
                                         <include reference="Ahe-UG-Pmq"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="pauseRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ea8-aJ-HBE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqW-Lg-ZAu">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -308,8 +314,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="2jn-ld-RfQ"/>
                     <connections>
+                        <outlet property="pauseButton" destination="zJU-ZA-iZA" id="dXt-TO-rFi"/>
                         <outlet property="recordButton" destination="oPy-pK-RqT" id="jdO-1y-ecB"/>
                         <outlet property="recordingLabel" destination="Vhe-E8-ena" id="GB9-QT-me9"/>
+                        <outlet property="resumeButton" destination="Zsf-ll-kRy" id="C8Z-aH-0FW"/>
                         <outlet property="stopButton" destination="ZqW-Lg-ZAu" id="Ht2-UK-dxn"/>
                         <outlet property="tapToRecordLabel" destination="fUi-Dy-r8L" id="84r-Sm-9cj"/>
                         <segue destination="AXA-Dm-hIm" kind="show" identifier="stopRecording" id="3He-HK-3Zd"/>

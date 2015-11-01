@@ -15,6 +15,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var tapToRecordLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var resumeButton: UIButton!
 
     private var audioRecorder: AVAudioRecorder!
     private var recordedAudio: RecordedAudio!
@@ -41,17 +43,17 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     @IBAction func stopAudio(sender: UIButton) {
         setVisualElementsForStopAudio()
 
         audioRecorder.stop()
 
         try! session.setActive(false)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func recordAudio(sender: UIButton) {
@@ -75,6 +77,13 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
+    @IBAction func pauseRecording(sender: UIButton) {
+        setVisualElementsForPauseAudio()
+    }
+
+    @IBAction func resumeRecording(sender: UIButton) {
+        setVisualElementsForResumeRecording()
+    }
 
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag){
@@ -89,15 +98,32 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     private func setVisualElementsInitial(){
-        stopButton.hidden = true
         recordButton.enabled = true
+        stopButton.hidden = true
+        pauseButton.hidden = true
+        resumeButton.hidden = true
+    }
+
+    private func setVisualElementsForPauseAudio(){
+        pauseButton.enabled = false
+        resumeButton.enabled = true
+        stopButton.enabled = false
+    }
+
+    private func setVisualElementsForResumeRecording(){
+        pauseButton.enabled = true
+        resumeButton.enabled = false
+        stopButton.enabled = true
     }
 
     private func setVisualElementsForRecordAudio(){
-        stopButton.hidden = false
         recordButton.enabled = false
         tapToRecordLabel.hidden = true
         recordingLabel.hidden = false
+        stopButton.hidden = false
+        pauseButton.hidden = false
+        resumeButton.hidden = false
+        resumeButton.enabled = false
     }
 
     private func setVisualElementsForStopAudio(){
