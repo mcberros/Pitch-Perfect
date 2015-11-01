@@ -30,7 +30,6 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playFast(sender: UIButton) {
-        stopResetAudio()
         playAudioWithRate(1.5)
     }
 
@@ -42,9 +41,7 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
 
-
     @IBAction func playReverb(sender: UIButton) {
-        // Reverb effect
         let audioUnit = AVAudioUnitReverb()
         audioUnit.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
         audioUnit.wetDryMix = 100.0
@@ -57,7 +54,6 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playSlow(sender: UIButton) {
-        stopResetAudio()
         playAudioWithRate(0.5)
     }
 
@@ -91,7 +87,6 @@ class PlaySoundsViewController: UIViewController {
     }
 
     private func playAudioWithVariablePitch(pitch: Float){
-        // Chipmunk and Vader effects
         let audioUnit = AVAudioUnitTimePitch()
         audioUnit.pitch = pitch
 
@@ -99,6 +94,8 @@ class PlaySoundsViewController: UIViewController {
     }
 
     private func playAudioWithRate(rate: Float) {
+        stopResetAudio()
+
         audioPlayer.rate = rate
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
