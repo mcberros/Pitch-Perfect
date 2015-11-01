@@ -42,6 +42,29 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
 
+
+    @IBAction func playReverb(sender: UIButton) {
+        stopResetAudio()
+
+        // Set the audioEngine
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+
+        let audioUnitReverb = AVAudioUnitReverb()
+        audioUnitReverb.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
+        audioUnitReverb.wetDryMix = 100.0
+        audioEngine.attachNode(audioUnitReverb)
+
+        audioEngine.connect(audioPlayerNode, to: audioUnitReverb, format: nil)
+        audioEngine.connect(audioUnitReverb, to: audioEngine.outputNode, format: nil)
+
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+
+        // Play the audio
+        audioPlayerNode.play()
+    }
+
     @IBAction func stopAudio(sender: UIButton) {
         stopResetAudio()
     }
