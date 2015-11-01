@@ -17,6 +17,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var resumeButton: UIButton!
+    @IBOutlet weak var pausedLabel: UILabel!
 
     private var audioRecorder: AVAudioRecorder!
     private var recordedAudio: RecordedAudio!
@@ -102,23 +103,29 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = true
         pauseButton.hidden = true
         resumeButton.hidden = true
+        pausedLabel.hidden = true
     }
 
     private func setVisualElementsForPauseAudio(){
         pauseButton.enabled = false
         resumeButton.enabled = true
         stopButton.enabled = false
+        pausedLabel.hidden = false
+        recordingLabel.hidden = true
     }
 
     private func setVisualElementsForResumeRecording(){
         pauseButton.enabled = true
         resumeButton.enabled = false
         stopButton.enabled = true
+        pausedLabel.hidden = true
+        recordingLabel.hidden = false
     }
 
     private func setVisualElementsForRecordAudio(){
         recordButton.enabled = false
         tapToRecordLabel.hidden = true
+        pausedLabel.hidden = true
         recordingLabel.hidden = false
         stopButton.hidden = false
         pauseButton.hidden = false
@@ -129,6 +136,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     private func setVisualElementsForStopAudio(){
         recordingLabel.hidden = true
         tapToRecordLabel.hidden = false
+        pausedLabel.hidden = true
     }
 
 }
