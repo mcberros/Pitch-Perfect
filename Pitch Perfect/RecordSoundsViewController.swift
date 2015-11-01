@@ -80,10 +80,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func pauseRecording(sender: UIButton) {
         setVisualElementsForPauseAudio()
+        audioRecorder.pause()
     }
 
     @IBAction func resumeRecording(sender: UIButton) {
         setVisualElementsForResumeRecording()
+        audioRecorder.record()
     }
 
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
