@@ -89,44 +89,48 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     private func setVisualElementsInitial(){
-        recordButton.enabled = true
-        stopButton.hidden = true
-        pauseButton.hidden = true
-        resumeButton.hidden = true
-        pausedLabel.hidden = true
+        setVisualElements(pausedLabHid: true, tapToRecLab: false,
+                          recordButEn: true, stopButHid: true,
+                          pauseButHid: true, resumeButHid: true)
     }
 
     private func setVisualElementsForPauseAudio(){
-        pauseButton.enabled = false
-        resumeButton.enabled = true
-        stopButton.enabled = false
-        pausedLabel.hidden = false
-        recordingLabel.hidden = true
+        setVisualElements(pausedLabHid: false, stopButEn: false, pauseButEn: false)
     }
 
     private func setVisualElementsForResumeRecording(){
-        pauseButton.enabled = true
-        resumeButton.enabled = false
-        stopButton.enabled = true
-        pausedLabel.hidden = true
-        recordingLabel.hidden = false
+        setVisualElements(pausedLabHid: true, recordLabHid: false, resumeButEn: false)
     }
 
     private func setVisualElementsForRecordAudio(){
-        recordButton.enabled = false
-        tapToRecordLabel.hidden = true
-        pausedLabel.hidden = true
-        recordingLabel.hidden = false
-        stopButton.hidden = false
-        pauseButton.hidden = false
-        resumeButton.hidden = false
-        resumeButton.enabled = false
+        setVisualElements(pausedLabHid: true, recordLabHid: false, resumeButEn: false)
     }
 
     private func setVisualElementsForStopAudio(){
-        recordingLabel.hidden = true
-        tapToRecordLabel.hidden = false
-        pausedLabel.hidden = true
+        setVisualElements(pausedLabHid: true, tapToRecLab: false,
+                          recordButEn: true, stopButHid: true,
+                          pauseButHid: true, resumeButHid: true)
     }
 
+    private func setVisualElements(pausedLabHid pausedLabHid: Bool,
+                                   recordLabHid: Bool? = true,
+                                   tapToRecLab: Bool? = true,
+                                   recordButEn: Bool? = false,
+                                   stopButHid: Bool? = false,
+                                   stopButEn: Bool? = true,
+                                   pauseButHid: Bool? = false,
+                                   pauseButEn: Bool? = true,
+                                   resumeButHid: Bool? = false,
+                                   resumeButEn: Bool? = true){
+        pausedLabel.hidden = pausedLabHid
+        recordingLabel.hidden = recordLabHid ?? true
+        tapToRecordLabel.hidden = tapToRecLab ?? true
+        recordButton.enabled = recordButEn ?? false
+        stopButton.hidden = stopButHid ?? true
+        stopButton.enabled = stopButEn ?? true
+        pauseButton.hidden = pauseButHid ?? false
+        pauseButton.enabled = pauseButEn ?? true
+        resumeButton.hidden = resumeButHid ?? false
+        resumeButton.enabled = resumeButEn ?? true
+    }
 }
