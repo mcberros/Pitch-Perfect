@@ -89,48 +89,48 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     private func setVisualElementsInitial(){
-        setVisualElements(pausedLabHid: true, tapToRecLab: false,
-                          recordButEn: true, stopButHid: true,
-                          pauseButHid: true, resumeButHid: true)
+        setVisualElements(hidePauseLabel: true, hideTapToRecLabel: false,
+                          enableRecordButton: true, hideStopButton: true,
+                          hidePauseButton: true, hideResumeButton: true)
     }
 
     private func setVisualElementsForPauseAudio(){
-        setVisualElements(pausedLabHid: false, stopButEn: false, pauseButEn: false)
+        setVisualElements(hidePauseLabel: false, enableStopButton: false, enablePauseButton: false)
     }
 
     private func setVisualElementsForResumeRecording(){
-        setVisualElements(pausedLabHid: true, recordLabHid: false, resumeButEn: false)
+        setVisualElements(hidePauseLabel: true, hideRecordLabel: false, enableResumeButton: false)
     }
 
     private func setVisualElementsForRecordAudio(){
-        setVisualElements(pausedLabHid: true, recordLabHid: false, resumeButEn: false)
+        setVisualElements(hidePauseLabel: true, hideRecordLabel: false, enableResumeButton: false)
     }
 
     private func setVisualElementsForStopAudio(){
-        setVisualElements(pausedLabHid: true, tapToRecLab: false,
-                          recordButEn: true, stopButHid: true,
-                          pauseButHid: true, resumeButHid: true)
+        setVisualElements(hidePauseLabel: true, hideTapToRecLabel: false,
+                          enableRecordButton: true, hideStopButton: true,
+                          hidePauseButton: true, hideResumeButton: true)
     }
 
-    private func setVisualElements(pausedLabHid pausedLabHid: Bool,
-                                   recordLabHid: Bool? = true,
-                                   tapToRecLab: Bool? = true,
-                                   recordButEn: Bool? = false,
-                                   stopButHid: Bool? = false,
-                                   stopButEn: Bool? = true,
-                                   pauseButHid: Bool? = false,
-                                   pauseButEn: Bool? = true,
-                                   resumeButHid: Bool? = false,
-                                   resumeButEn: Bool? = true){
-        pausedLabel.hidden = pausedLabHid
-        recordingLabel.hidden = recordLabHid ?? true
-        tapToRecordLabel.hidden = tapToRecLab ?? true
-        recordButton.enabled = recordButEn ?? false
-        stopButton.hidden = stopButHid ?? true
-        stopButton.enabled = stopButEn ?? true
-        pauseButton.hidden = pauseButHid ?? false
-        pauseButton.enabled = pauseButEn ?? true
-        resumeButton.hidden = resumeButHid ?? false
-        resumeButton.enabled = resumeButEn ?? true
+    private func setVisualElements(hidePauseLabel hidePauseLabel: Bool,
+                                   hideRecordLabel: Bool = true,
+                                   hideTapToRecLabel: Bool = true,
+                                   enableRecordButton: Bool = false,
+                                   hideStopButton: Bool = false,
+                                   enableStopButton: Bool = true,
+                                   hidePauseButton: Bool = false,
+                                   enablePauseButton: Bool = true,
+                                   hideResumeButton: Bool = false,
+                                   enableResumeButton: Bool = true){
+        pausedLabel.hidden = hidePauseLabel
+        recordingLabel.hidden = hideRecordLabel
+        tapToRecordLabel.hidden = hideTapToRecLabel
+        recordButton.enabled = enableRecordButton
+        stopButton.hidden = hideStopButton
+        stopButton.enabled = enableStopButton
+        pauseButton.hidden = hidePauseButton
+        pauseButton.enabled = enablePauseButton
+        resumeButton.hidden = hideResumeButton
+        resumeButton.enabled = enableResumeButton
     }
 }
